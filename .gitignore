@@ -1,0 +1,39 @@
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+web/node_modules/
+web/dist/
+web/coverage/
+test-results/
+*.log
+.DS_Store
+Thumbs.db
+*.tsbuildinfo
+.learnings/
+~$*
+
+# Local secrets and user media must never be published.
+*.pem
+*.key
+credentials*.json
+recordings/
+captures/
+uploads/
+evaluation/data/
+evaluation/runs/
+*.wav
+*.mp3
+*.m4a
+*.ogg
+*.webm
+*.mp4
+*.mov
+
+# Historical reports and render intermediates remain on the author's computer.
+# Only the archive explanation belongs to the initial development repository.
+/deliverables/*
+!/deliverables/README.md

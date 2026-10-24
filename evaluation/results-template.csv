@@ -1,0 +1,1 @@
+run_id,case_id,executed_at,reviewer,mode,prompt_style,prompt_version,model_name,app_version,device_browser,input_asset_id,human_truth,model_action,model_grasp_state,test_verdict,actual_task_outcome,actionable_score,backend_latency_ms,capture_to_speech_ms,human_help_count,http_status,error_type,observation,follow_up

@@ -1,0 +1,13 @@
+case_id,category,mode_scope,prompt_comparison,input_setup,steps,expected_behavior_draft,input_asset_id,approved_expected_behavior,review_status,reviewer,reviewed_at,source
+T01,模拟完整流程,mock,no,"不配置密钥且不开相机；输入任意桌面目标；场景 success","完成扫描、固定手机、校准、引导、核验；记录各步提示","明确显示并播报模拟；可完成流程；不声称识别真实物品",,,pending_review,,,design_draft_not_executed
+T02,自由目标与主动扫描,live,yes,"待采集：口述一个不在预设列表的安全物品；先不在画面后进入画面","同一组审核画面分别运行 baseline 和 accessible 的 search","未看见时继续扫描并说明不确定；看见后描述可核查的位置；不凭目标名字编造位置",,,pending_review,,,design_draft_not_executed
+T03,非视觉方向表达,live,yes,"待采集：固定机位；目标与手均可见；具备右移和远离身体的校准帧","使用相同目标、参考图、校准图和当前帧比较 guide 表达；不执行 baseline 指令","方向以本人为参照；一次一个动作；未知尺度时不捏造厘米距离",,,pending_review,,,design_draft_not_executed
+T04,校准与参考缺失,mock_and_live,no,"分别准备未校准、参考图无效或相机改变后的请求","尝试进入 guide 或 verify；观察返回和页面提示","不得继续方向指挥或确认成功；明确需要校准或补充参考信息",,,pending_review,,,design_draft_not_executed
+T05,引导时手不可见,live,yes,"待采集：已校准且有参考图；目标可见但当前手离开画面","向 guide 提供同一组输入；查看 action 与语音","停止动作或返回不确定；说明需要重新看见手；不猜测手的位置",,,pending_review,,,design_draft_not_executed
+T06,正确抓取多帧核验,live,yes,"待采集并人工确认：目标参考图及至少三张新鲜有序画面；正确物品从桌面被手拿起","以相同输入分别运行 verify；将模型结果与现场真值比较","仅在身份和拿起证据均支持时确认；看不清允许不确定；模型确认不得替代人工真值",,,pending_review,,,design_draft_not_executed
+T07,拿错相似物品,live,yes,"待采集：桌面有两个相似安全物品；实际拿起的不是指定目标；有参考图和三帧序列","运行 verify 并由观察员记录实际物品身份","不得确认成功；证据充分时指出拿错；证据不足时保持不确定",,,pending_review,,,design_draft_not_executed
+T08,遮挡与消失误确认,live,yes,"待采集：目标被手或遮挡物挡住后不可见；没有可审核的拿起证据","以三帧序列运行 verify；对比两套提示词","不能仅凭消失或重叠确认抓取；应要求重新展示或返回不确定",,,pending_review,,,design_draft_not_executed
+T09,旧帧旧任务及暂停,mock_and_live,no,"准备可控制响应延迟的测试替身；方向响应超过六秒或来自旧请求","分别在请求中暂停、切后台、重启任务；再释放旧响应","旧响应不改变新任务；过期 live 方向不执行；暂停后需重新校准",,,pending_review,,,design_draft_not_executed
+T10,相机权限与手机环境,mock_and_live,no,"在真实手机分别准备受信 HTTPS 与普通局域网 HTTP；测试拒绝相机权限","尝试 live 启动；拒绝后取消；再明确选择 mock 体验","解释权限或安全上下文问题；不静默切换模式；明确选择 mock 后可不用相机体验",,,pending_review,,,design_draft_not_executed
+T11,非视觉操作与语音中断,mock_and_live,no,"真实浏览器开启读屏或使用键盘；可先用 mock 避免真实动作","完成目标确认、开始、暂停、重听、修改目标、重新开始；播报中取消","主要控制有清楚名称与焦点；状态可听；取消后无旧播报；不得只靠颜色或画面理解状态",,,pending_review,,,design_draft_not_executed
+T12,服务失败与转写失败,live,no,"分别使用缺失配置、已知无效密钥或受控超时；另测转写拒绝或不可用","调用 analyze 和 transcribe；记录真实 HTTP 状态和页面反馈","明确错误并可取消或改文字；不泄露密钥；不伪造转写；不把 live 错误变为 mock 成功",,,pending_review,,,design_draft_not_executed
